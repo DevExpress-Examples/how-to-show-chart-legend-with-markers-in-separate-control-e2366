@@ -4,18 +4,24 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-* **[Form1.cs](./CS/Form1.cs) (VB: [Form1.vb](./VB/Form1.vb))**
-<!-- default file list end -->
-# How to show chart legend with markers in separate control
+# Chart for WinForms - Show chart legend with markers in separate control
 
+This example shows a ChartControl legend in a GridControl.
 
-<p>This example illustrates how to show a ChartControl legend in a GridControl.</p>
+![](chart.png)
 
-<br/>
+## Files to Review
 
+* [Form1.cs](./CS/Form1.cs) (VB: [Form1.vb](./VB/Form1.vb))
+
+## Documentation
+
+- [Adding Legends](https://docs.devexpress.com/WindowsForms/115948/controls-and-libraries/chart-control/legends/adding-legends)
+
+## More Examples
+
+- [WinForms Chart - Add an Additional Legend to a Chart](https://github.com/DevExpress-Examples/winforms-chart-add-an-additional-legend-to-a-chart)
 
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
