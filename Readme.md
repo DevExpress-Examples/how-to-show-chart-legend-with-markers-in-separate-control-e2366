@@ -7,9 +7,17 @@
 
 # Chart for WinForms - Show chart legend with markers in separate control
 
-This example shows a ChartControl legend in a GridControl.
+This example shows how to extract legend items from a [ChartControl](https://docs.devexpress.com/WindowsForms/8117/controls-and-libraries/chart-control) and display them in a [GridControl](https://docs.devexpress.com/WindowsForms/3455/controls-and-libraries/data-grid).
 
 ![](chart.png)
+
+Instead of displaying the legend within the chart area, the example sets up the legend to appear inside a separate control—specifically, a `GridControl`
+
+- The `ChartControl` is populated with series data.
+
+- A custom `BindingList<LegendItem>` is created, where each `LegendItem` contains the marker (color, symbol) and series name.
+
+- The `GridControl` is then bound to this list and displays the legend externally.
 
 ## Files to Review
 
