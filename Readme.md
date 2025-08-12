@@ -6,11 +6,46 @@
 
 # Chart for WinForms - Show chart legend with markers in separate control
 
-This example shows how to extract legend items from a [ChartControl](https://docs.devexpress.com/WindowsForms/8117/controls-and-libraries/chart-control) and display them in a [GridControl](https://docs.devexpress.com/WindowsForms/3455/controls-and-libraries/data-grid) instead of the built-in chart legend.
+This example extracts legend items from a [ChartControl](https://docs.devexpress.com/WindowsForms/8117/controls-and-libraries/chart-control) and displays them in a [GridControl](https://docs.devexpress.com/WindowsForms/3455/controls-and-libraries/data-grid) instead of the built-in chart legend.
 
 ![](chart.png)
 
-The legend is created by extracting data from the chart's series and manually creating a `DataTable`. This `DataTable` is then used as the data source for the `GridControl`.
+## Implementation Details
+
+### Bind Grid to Chart Series
+
+Assign the chart series to the [GridControl.DataSource](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.GridControl.DataSource) property:
+
+```
+gridControl1.DataSource = chart.Series;
+```
+### Display Series Image in Grid
+
+- Create a `GetMarkerImage` method that obtains the series and create a bitmap image for it. 
+- Create a [Hashtable](https://learn.microsoft.com/en-us/dotnet/api/system.collections.hashtable?view=net-9.0) (`legendMarkersTable`) that contains chart series and their image. 
+- Assign the `legendMarkersTable` to the grid's column in the [ColumnView.CustomUnboundColumnData](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.Base.ColumnView.CustomUnboundColumnData) event.
+
+### Add Interactivity
+
+To select the series when you click a grid row, handle the [ColumnView.FocusedRowChanged](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.Base.ColumnView.FocusedRowChanged) event:
+
+```cs
+private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
+    chart.SetObjectSelection(gridView1.GetRow(e.FocusedRowHandle));
+}
+```
+
+To select a grid row when you click a series, handle the [ChartControl.ObjectSelected](https://docs.devexpress.com/WindowsForms/DevExpress.XtraCharts.ChartControl.ObjectSelected) event:
+
+```cs
+private void chart_ObjectSelected(object sender, HotTrackEventArgs e) {
+    if (e.HitInfo.InSeries) {
+        gridView1.FocusedRowHandle = gridView1.GetRowHandle(chart.Series.IndexOf(((Series)e.Object)));
+        
+    }
+}
+```
+
 
 ## Files to Review
 
