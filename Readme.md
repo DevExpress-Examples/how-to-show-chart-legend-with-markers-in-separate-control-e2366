@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
 
-# Chart for WinForms - Show chart legend with markers in separate control
+# WinForms Chart - Show chart legend with markers in separate control
 
 This example extracts legend items from a [ChartControl](https://docs.devexpress.com/WindowsForms/8117/controls-and-libraries/chart-control) and displays them in a [GridControl](https://docs.devexpress.com/WindowsForms/3455/controls-and-libraries/data-grid) instead of the built-in chart legend.
 
