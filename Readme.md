@@ -4,9 +4,9 @@
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
 
-# WinForms Chart - Show chart legend with markers in separate control
+# WinForms Chart - Display Chart Legend with Markers in Grid Control
 
-This example extracts legend items from a [ChartControl](https://docs.devexpress.com/WindowsForms/8117/controls-and-libraries/chart-control) and displays them in a [GridControl](https://docs.devexpress.com/WindowsForms/3455/controls-and-libraries/data-grid) instead of the built-in chart legend.
+This example obtains a legend from a [ChartControl](https://docs.devexpress.com/WindowsForms/8117/controls-and-libraries/chart-control) and displays it in a [GridControl](https://docs.devexpress.com/WindowsForms/3455/controls-and-libraries/data-grid) instead of the built-in chart legend.
 
 ![](chart.png)
 
@@ -19,7 +19,7 @@ Assign the chart series to the [GridControl.DataSource](https://docs.devexpress.
 ```
 gridControl1.DataSource = chart.Series;
 ```
-### Display Series Image in Grid
+### Display Markers in Grid
 
 - Create a `GetMarkerImage` method that obtains the series and create a bitmap image for it. 
 - Create a [Hashtable](https://learn.microsoft.com/en-us/dotnet/api/system.collections.hashtable?view=net-9.0) (`legendMarkersTable`) that contains chart series and their image. 
