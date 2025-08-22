@@ -48,13 +48,13 @@ void gridView1_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.
     ```
 - Handle the [ChartControl.ObjectSelected](https://docs.devexpress.com/WindowsForms/DevExpress.XtraCharts.ChartControl.ObjectSelected) event to focus the corresponding grid row when a user clicks a chart series:
 
-```csharp
-void chart_ObjectSelected(object sender, HotTrackEventArgs e) {
-    if (e.HitInfo.InSeries) {
-        gridView1.FocusedRowHandle = gridView1.GetRowHandle(chart.Series.IndexOf(((Series)e.Object)));
+    ```csharp
+    void chart_ObjectSelected(object sender, HotTrackEventArgs e) {
+        if (e.HitInfo.InSeries) {
+            gridView1.FocusedRowHandle = gridView1.GetRowHandle(chart.Series.IndexOf(((Series)e.Object)));
+        }
     }
-}
-```
+    ```
 
 ## Files to Review
 
@@ -75,3 +75,4 @@ void chart_ObjectSelected(object sender, HotTrackEventArgs e) {
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
