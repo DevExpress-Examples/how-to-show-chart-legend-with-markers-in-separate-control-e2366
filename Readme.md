@@ -5,11 +5,56 @@
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
 
-# Chart for WinForms - Show chart legend with markers in separate control
+# WinForms Chart - Display a Standalone Chart Legend
 
-This example shows a ChartControl legend in a GridControl.
+This example uses a grid as a legend for the Chart control. The grid displays chart series names and legend markers. When you select a row in the grid, the corresponding series is highlighted in the chart, and selecting a series in the chart highlights the corresponding row in the grid. 
 
-![](chart.png)
+![WinForms Chart - Display a Standalone Chart Legend, DevExpress](./chart.png)
+
+## Implementation Details
+
+### Create Legend Markers
+
+The `CreateLegendMarkers` method creates legend marker images by temporarily cloning the `ChartControl`. It stores the generated markers in the `legendMarkersTable` hashtable.
+
+### Bind the Grid to Chart Series
+
+Assign the chart's series collection to the grid's `GridControl.DataSource` property:
+
+```csharp
+gridControl1.DataSource = chart.Series;
+```
+
+### Display Series Markers in the Grid
+
+Handle the grid's [GridView.CustomUnboundColumnData](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.Base.ColumnView.CustomUnboundColumnData) event to assign the `legendMarkersTable` to the grid's unbound *Image* column.
+    
+```csharp
+void gridView1_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e) {
+    if (e.IsGetData && e.Column == colImage) {
+        e.Value = legendMarkersTable[((Series)e.Row)];
+    }
+}
+```
+
+### Implement Two-Way Interactivity
+
+- Handle the [GridView.FocusedRowChanged](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGrid.Views.Base.ColumnView.FocusedRowChanged) event to select the corresponding chart series when a user selects a grid row:
+
+    ```csharp
+    void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e) {
+        chart.SetObjectSelection(gridView1.GetRow(e.FocusedRowHandle));
+    }
+    ```
+- Handle the [ChartControl.ObjectSelected](https://docs.devexpress.com/WindowsForms/DevExpress.XtraCharts.ChartControl.ObjectSelected) event to focus the corresponding grid row when a user clicks a chart series:
+
+```csharp
+void chart_ObjectSelected(object sender, HotTrackEventArgs e) {
+    if (e.HitInfo.InSeries) {
+        gridView1.FocusedRowHandle = gridView1.GetRowHandle(chart.Series.IndexOf(((Series)e.Object)));
+    }
+}
+```
 
 ## Files to Review
 
