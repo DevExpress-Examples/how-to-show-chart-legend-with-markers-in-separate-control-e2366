@@ -69,7 +69,7 @@ void gridView1_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.
 - [WinForms Chart - Add an Additional Legend to a Chart](https://github.com/DevExpress-Examples/winforms-chart-add-an-additional-legend-to-a-chart)
 
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=winforms-charts-show-chart-legend-with-markers-in-separate-control&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=winforms-charts-show-chart-legend-with-markers-in-separate-control&~~~was_helpful=no)
 
